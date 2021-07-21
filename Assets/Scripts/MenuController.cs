@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private GameObject sounds, music, mainList, SettingsList, settingsParameters;
+    [SerializeField] private GameObject sounds, music, textController, mainList, SettingsList, settingsParameters;
     [SerializeField] private AudioClip tickSound;
     [SerializeField] private GameObject[] menuPoints, settingsPoints;
     [SerializeField] private Text[] settingsValues;
@@ -62,6 +62,9 @@ public class MenuController : MonoBehaviour
         settingsValues[2].text = PlayerPrefs.GetFloat("SoundVolume", 5f).ToString();
         PosX[3] = Mathf.RoundToInt(PlayerPrefs.GetFloat("MusicVolume", 5f));
         settingsValues[3].text = PlayerPrefs.GetFloat("MusicVolume", 5f).ToString();
+        PosX[4] = PlayerPrefs.GetInt("Language", 0);
+        if (PlayerPrefs.GetInt("Language", 0) == 0) settingsValues[4].text = "English";
+        else if (PlayerPrefs.GetInt("Language", 0) == 1) settingsValues[4].text = "Русский";
     }
     void Update()
     {
@@ -476,6 +479,25 @@ public class MenuController : MonoBehaviour
                 }
                 break;
             case 4:
+                {
+                    switch (PosX[currentPosY])
+                    {
+                        case 0:
+                            {
+                                PlayerPrefs.SetInt("Language", 0);
+                                textController.GetComponent<TextController>().ChangeLanguage();
+                                settingsValues[currentPosY].text = "English";
+                            }
+                            break;
+                        case 1:
+                            {
+                                PlayerPrefs.SetInt("Language", 1);
+                                textController.GetComponent<TextController>().ChangeLanguage();
+                                settingsValues[currentPosY].text = "Русский";
+                            }
+                            break;
+                    }
+                }
                 break;
             case 5:
                 break;
