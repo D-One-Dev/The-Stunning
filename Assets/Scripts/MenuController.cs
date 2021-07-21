@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private GameObject sounds, mainList, SettingsList, settingsParameters;
+    [SerializeField] private GameObject sounds, music, mainList, SettingsList, settingsParameters;
     [SerializeField] private AudioClip tickSound;
     [SerializeField] private GameObject[] menuPoints, settingsPoints;
     [SerializeField] private Text[] settingsValues;
@@ -58,6 +58,10 @@ public class MenuController : MonoBehaviour
         else if (resX == 1920 && resY == 1080) PosX[0] = 7;
         else if (resX == 2560 && resY == 1440) PosX[0] = 8;
         else if (resX == 3840 && resY == 2160) PosX[0] = 9;
+        PosX[2] = Mathf.RoundToInt(PlayerPrefs.GetFloat("SoundVolume", 5f));
+        settingsValues[2].text = PlayerPrefs.GetFloat("SoundVolume", 5f).ToString();
+        PosX[3] = Mathf.RoundToInt(PlayerPrefs.GetFloat("MusicVolume", 5f));
+        settingsValues[3].text = PlayerPrefs.GetFloat("MusicVolume", 5f).ToString();
     }
     void Update()
     {
@@ -304,8 +308,172 @@ public class MenuController : MonoBehaviour
                 }
                 break;
             case 2:
+                {
+                    switch (PosX[currentPosY])
+                    {
+                        case 0:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 0f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 1:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 1f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 2:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 2f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 3:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 3f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 4:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 4f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 5:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 5f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 6:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 6f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 7:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 7f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 8:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 8f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 9:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 9f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                        case 10:
+                            {
+                                PlayerPrefs.SetFloat("SoundVolume", 10f);
+                                sounds.GetComponent<SoundController>().SetVolume(PlayerPrefs.GetFloat("SoundVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("SoundVolume").ToString();
+                            }
+                            break;
+                    }
+                }
                 break;
             case 3:
+                {
+                    switch (PosX[currentPosY])
+                    {
+                        case 0:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 0f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 1:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 1f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 2:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 2f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 3:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 3f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 4:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 4f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 5:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 5f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 6:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 6f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 7:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 7f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 8:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 8f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 9:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 9f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                        case 10:
+                            {
+                                PlayerPrefs.SetFloat("MusicVolume", 10f);
+                                music.GetComponent<MusicController>().SetVolume(PlayerPrefs.GetFloat("MusicVolume"));
+                                settingsValues[currentPosY].text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+                            }
+                            break;
+                    }
+                }
                 break;
             case 4:
                 break;

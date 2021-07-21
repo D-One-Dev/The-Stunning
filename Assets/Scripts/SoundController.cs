@@ -8,7 +8,7 @@ public class SoundController : MonoBehaviour
     void Start()
     {
         audSource = GetComponent<AudioSource>();
-        audSource.volume = .5f;
+        audSource.volume = (PlayerPrefs.GetFloat("SoundVolume", 5f)) / 10;
     }
     void Update()
     {
@@ -17,5 +17,9 @@ public class SoundController : MonoBehaviour
     { 
         audSource.clip = sound;
         audSource.Play();
+    }
+    public void SetVolume(float volume)
+    {
+        audSource.volume = (PlayerPrefs.GetFloat("SoundVolume", 5f)) / 10;
     }
 }
