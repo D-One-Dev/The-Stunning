@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     [SerializeField] private GameObject blackScreen;
+    private bool isLoading;
     private AsyncOperation sceneLoad;
     void Start()
     {
@@ -14,10 +15,14 @@ public class SceneChanger : MonoBehaviour
     {
     }
     public void LoadScene(string sceneName)
-    { 
-        sceneLoad = SceneManager.LoadSceneAsync(sceneName);
-        sceneLoad.allowSceneActivation = false;
-        blackScreen.GetComponent<SceneChangeAnimator>().animationType = true;
+    {
+        if (!isLoading)
+        {
+            isLoading = true;
+            sceneLoad = SceneManager.LoadSceneAsync(sceneName);
+            sceneLoad.allowSceneActivation = false;
+            blackScreen.GetComponent<SceneChangeAnimator>().animationType = true;
+        }
     }
     public void ChangeScene()
     { 

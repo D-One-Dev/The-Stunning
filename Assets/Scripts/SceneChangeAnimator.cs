@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SceneChangeAnimator : MonoBehaviour
 {
     [SerializeField] private GameObject sceneManager;
-    [SerializeField] private Image blackScreen;
+    [SerializeField] private Image blackScreen, maskAnimation;
     public bool animationType;
     void Start()
     {
@@ -21,6 +21,7 @@ public class SceneChangeAnimator : MonoBehaviour
         else if(animationType && blackScreen.color.a < 1f)
         { 
             blackScreen.color += new Color(blackScreen.color.r, blackScreen.color.g, blackScreen.color.b, Time.fixedDeltaTime * 4);
+            if (!maskAnimation.enabled) maskAnimation.enabled = true;
         }
         else if (animationType && blackScreen.color.a >= 1f)
         {

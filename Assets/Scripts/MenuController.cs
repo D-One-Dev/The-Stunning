@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private GameObject sounds, music, textController, mainList, SettingsList, settingsParameters;
+    [SerializeField] private GameObject sounds, music, textController, mainList, SettingsList, settingsParameters, sceneManager;
     [SerializeField] private AudioClip tickSound;
     [SerializeField] private GameObject[] menuPoints, settingsPoints;
     [SerializeField] private Text[] settingsValues;
@@ -160,7 +160,8 @@ public class MenuController : MonoBehaviour
                 {
                     if (currentPoints == menuPoints)
                     {
-                        Debug.Log(PlayerPrefs.GetInt("LevelNumber", -1));
+                        PlayerPrefs.SetString("LevelName", "Level_1");
+                        sceneManager.GetComponent<SceneChanger>().LoadScene(PlayerPrefs.GetString("LevelName", "Level_1"));
                     }
                     else if (currentPoints == settingsPoints)
                     {
